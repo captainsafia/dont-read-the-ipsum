@@ -33,6 +33,35 @@ def get_replies_to_user(number, user):
 			all_replies += (' ' + tweet.text + ' ')
 	return all_replies
 
+def clean_up_text(text):
+	exclude = set(string.punctuation)
+	exclude_words = ['RT', 'MT']
+	word_list = text.split(" ")
+	word_list = filter(lambda word: word not in exclude_words, word_list)
+	word_list = filter(lambda word: not word.startswith('@'), word_list)
+	cleaned_text = ''
+	for word in word_list:
+		cleaned_text += (' ' + word + ' ')
+	cleaned_text = "".join(char for char in text if char not in exclude)
+	return cleaned_text
+
+
+
+	return cleaned_text
+
+def get_jumbled_text(text):
+    """
+    Return jumpled version of text.
+    """
+    text = text.split(" ")
+    jumbled = ""
+
+    while len(text) > 0:
+        word = random.choice(text)
+        del text[text.index(word)]
+        jumbled += (" " + word + " ")
+
+    return jumbled.strip()
 
 print get_tweets_from_user(500, 'officialjaden')
 print get_replies_to_user(500, 'officialjaden')
