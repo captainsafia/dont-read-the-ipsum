@@ -7,11 +7,11 @@ from collections import defaultdict
 from flask import Flask, render_template, request, jsonify, redirect
 import time
 
-app = Flask(__name__)
+api = Flask(__name__)
 
-@app.route("/")
+@api.route("/api")
 def index():
-    return "Index page here eventually"
+    return "API stats"
 
 if __name__ == "__main__":
-	app.run(debug = True, host = '0.0.0.0')
+	app.run(debug=True, host='0.0.0.0')
