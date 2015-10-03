@@ -40,7 +40,6 @@ def clean_up_text(text):
 
 	exclude_words = ['RT', 'MT']
 	word_list = text.split(" ")
-	print word_list
 	word_list = filter(lambda word: word not in exclude_words, word_list)
 	word_list = filter(lambda word: not word.startswith('@'), word_list)
 	word_list = filter(lambda word: not word.startswith("http"), word_list)
