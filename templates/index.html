@@ -36,12 +36,12 @@
         <link rel="stylesheet" href="css/layouts/marketing-old-ie.css">
     <![endif]-->
     <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
     <!--<![endif]-->
   
 
 
-    <script src="scripts/formatScripts.js"></script>
+    <script src="{{ url_for('static', filename='scripts/formatScripts.js') }}"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     
 
