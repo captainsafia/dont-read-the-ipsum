@@ -38,7 +38,7 @@ def get_text_from_comment(comment):
         body = comment.body
         exclude = set(string.punctuation)
         body = "".join(char for char in body if char not in exclude)
-        body = body.lower()
+        body = " ".join(word for word in body.split(" ") if not word.startswith("http"))
         return body
     else:
         raise Exception("Could not find body for comment", comment.id)
@@ -83,10 +83,10 @@ def get_text_from_comments(count, count_type, comments):
 
         actual_count = counter_helper(content)
         if actual_count > count:
-            aggregated += truncate_content(content, actual_count, count)
+            aggregated += (truncate_content(content, actual_count, count) + " ")
             break
         else:
-            aggregated += content
+            aggregated += (content + " ")
     return aggregated
 
 def get_jumbled_text(text):
