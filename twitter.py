@@ -32,20 +32,22 @@ def get_replies_to_user(number, user):
 	replies = api.search(q = user, count = number)
 	for tweet in replies:
 		if tweet.text not in all_replies:
-			all_replies += (' ' + tweet.text + ' ')
+			all_replies += (tweet.text)
 	return all_replies
 
 def clean_up_text(text):
 	exclude = set(string.punctuation)
+
 	exclude_words = ['RT', 'MT']
 	word_list = text.split(" ")
+	print word_list
 	word_list = filter(lambda word: word not in exclude_words, word_list)
 	word_list = filter(lambda word: not word.startswith('@'), word_list)
-	word_list = filter(lambda word: not word.startswith('http'), word_list)
+	word_list = filter(lambda word: not word.startswith("http"), word_list)
 	cleaned_text = ''
 	for word in word_list:
 		cleaned_text += (' ' + word + ' ')
-	cleaned_text = "".join(char for char in text if char not in exclude)
+	cleaned_text = "".join(char for char in cleaned_text if char not in exclude)
 	return cleaned_text
 
 
