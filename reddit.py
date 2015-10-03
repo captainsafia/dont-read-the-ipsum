@@ -1,5 +1,6 @@
 import praw
 import string
+import random
 
 USER_AGENT = "web:com.do.not.read.the.ipsum:v0.0.1 (by /u/captainsafia)"
 THREAD_IDS = {
@@ -44,3 +45,17 @@ def get_text_from_comments(count, count_type, comments):
         else:
             aggregated += content
     return aggregated
+
+def get_jumbled_text(text):
+    """
+    Return jumpled version of text.
+    """
+    text = text.split(" ")
+    word = random.choice(text)
+
+    while word:
+        position = random.randrange(len(word))
+        jumble += word[position]
+        word = word[:position] + word[(position + 1):]
+
+    return jumbled
