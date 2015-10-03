@@ -13,5 +13,13 @@ api = Flask(__name__)
 def index():
     return "API stats"
 
+@api.route("/api/comment/ipsum/twitter/<source>")
+def ipsum_from_twitter():
+    pass
+
+@api.route("/api/comment/reddit/<source>")
+def ipsum_from_reddit():
+    pass
+
 if __name__ == "__main__":
 	app.run(debug=True, host='0.0.0.0')
