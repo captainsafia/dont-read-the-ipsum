@@ -3,6 +3,8 @@ import os
 import tweepy
 import datetime
 import pprint
+import string
+import random
 from config import *
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
@@ -63,7 +65,7 @@ def get_jumbled_text(text):
 
     return jumbled.strip()
 
-print get_tweets_from_user(500, 'officialjaden')
-print get_replies_to_user(500, 'officialjaden')
+# print get_tweets_from_user(500, 'officialjaden')
+# print get_replies_to_user(500, 'officialjaden')
 
 #remove pound sign, punctuation, URLs

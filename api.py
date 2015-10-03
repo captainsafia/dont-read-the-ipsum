@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify, redirect
 import reddit
+import twitter
 
 api = Flask(__name__)
 
@@ -7,9 +8,26 @@ api = Flask(__name__)
 def index():
     return "API stats"
 
-@api.route("/api/comment/ipsum/twitter/<source>")
+@api.route("/api/comment/ipsum/twitter", methods = ["POST"])
 def ipsum_from_twitter():
-    pass
+    data = request.form
+    count = data.get("count")
+    count_type = data.get("count_type")
+    source = data.get("source")
+    tweets_or_replies = data.get("tweets_or_replies")
+    jumbled_text = ""
+    if tweets_or_replies == 'tweets':
+        tweets = twitter.get_tweets_from_user(count, source)
+        cleaned_tweets = twitter.clean_up_text(tweets)
+        jumbled_text = twitter.get_jumbled_text(cleaned_tweets)
+    else:
+        tweets = twitter.get_replies_to_user(count, source)
+        cleaned_tweets = twitter.clean_up_text(tweets)
+        jumbled_text = twitter.get_jumbled_text(cleaned_tweets)
+    output = {"text": jumbled_text}
+    return jsonify(**output)
+
+
 
 @api.route("/api/comment/reddit", methods=["POST"])
 def ipsum_from_reddit():
