@@ -111,6 +111,6 @@ def get_jumbled_text(text):
     while len(text) > 0:
         word = random.choice(text)
         del text[text.index(word)]
-        jumbled += (" " + word + " ")
+        jumbled += (word + " ")
 
     return jumbled.strip()
