@@ -7,10 +7,6 @@ except ImportError:
     from urlparse import urlparse
 
 USER_AGENT = "web:com.do.not.read.the.ipsum:v0.0.1 (by /u/captainsafia)"
-THREAD_IDS = {
-    "neil_tyson" : "mateq",
-    "barack_obamo" : "z1c9z"
-}
 
 client = praw.Reddit(user_agent = USER_AGENT)
 
@@ -24,17 +20,6 @@ def get_id_from_url(url):
         return submission_id
     except:
         raise Exception("Could not find submission ID for", url)
-
-def get_comments_from_name(name):
-    """
-    Get comments from submission by name.
-    """
-    submission_id = THREAD_IDS.get(name)
-    if submission_id:
-        submission = client.get_submission(submission_id = submission_id)
-        return submission.comments
-    else:
-        raise Exception("Could not find submission ID for", name)
 
 def get_comments_from_short_url(url):
     """
