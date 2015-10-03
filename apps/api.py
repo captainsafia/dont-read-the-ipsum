@@ -4,7 +4,7 @@ import twitter
 
 api = Flask(__name__)
 
-@api.route("/api")
+@api.route("/")
 def index():
     return "API stats"
 
@@ -26,7 +26,6 @@ def ipsum_from_twitter():
         jumbled_text = twitter.get_jumbled_text(cleaned_tweets)
     output = {"text": jumbled_text}
     return jsonify(**output)
-
 
 
 @api.route("/comment/ipsum/reddit", methods=["POST"])
