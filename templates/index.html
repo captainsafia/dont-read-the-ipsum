@@ -90,8 +90,10 @@
 
 <script>
     var data={count:200, count_type:"word", source:"https://redd.it/mateq"};
-    
-    $.post( "/api/comment/reddit", data, function( response ) {
+    console.log(data);
+    $.post( "/api/comment/ipsum/reddit", data, function( response ) {
+        console.log(data);
+        console.log(response);
         var text = response.text;
         document.getElementById('dump').innerHTML=gimmeLetter(text);
     });
