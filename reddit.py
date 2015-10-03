@@ -1,6 +1,7 @@
 import praw
 import string
 import random
+import urllib.parse as urlparse
 
 USER_AGENT = "web:com.do.not.read.the.ipsum:v0.0.1 (by /u/captainsafia)"
 THREAD_IDS = {
@@ -9,6 +10,17 @@ THREAD_IDS = {
 }
 
 client = praw.Reddit(user_agent = USER_AGENT)
+
+def get_id_from_url(url):
+    """
+    Gets the ID associated with a Reddit submission
+    """
+    try:
+        parsed = urlparse.urlparse(url)
+        submission_id = parsed.path.strip("/")
+        return submission_id
+    except:
+        raise Exception("Could not find submission ID for", url)
 
 def get_comments_from_name(name):
     """
@@ -20,6 +32,15 @@ def get_comments_from_name(name):
         return submission.comments
     else:
         raise Exception("Could not find submission ID for", name)
+
+def get_comments_from_short_url(url):
+    """
+    Returns the comment submissions from a particular URL
+    """
+    submission_id = get_id_from_url(url)
+    if submission_id:
+        submission = client.get_submission(submission_id = submission_id)
+        return submission.comments
 
 def get_text_from_comment(comment):
     """
@@ -49,6 +70,12 @@ def counter_helper_partial(count_type):
     else:
         raise Exception("Unrecognized count_type: ", count_type)
 
+def truncate_content(content, expected, actual):
+    """
+    Truncate the content from the actual length to the expected length.
+    """
+    truncated = content[0:min(actual, expected)]
+    return truncated
 
 def get_text_from_comments(count, count_type, comments):
     """
@@ -56,14 +83,20 @@ def get_text_from_comments(count, count_type, comments):
     """
     aggregated = ""
     for comment in comments:
+        if isinstance(comment, praw.objects.MoreComments):
+            comments = comment.comments()
+            continue
+
         content = get_text_from_comment(comment)
         try:
             counter_helper = counter_helper_partial(count_type)
         except:
             counter_helper = counter_helper_partial("word")
 
-        if counter_helper(content) > count:
-            aggregated += truncate_content(content)
+        actual_count = counter_helper(content)
+        if actual_count > count:
+            aggregated += truncate_content(content, actual_count, count)
+            break
         else:
             aggregated += content
     return aggregated
