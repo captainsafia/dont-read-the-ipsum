@@ -1,21 +1,18 @@
 var paragraphMinSentences=2,
 	paragraphMaxSentences=8,
 	sentenceMinWords=3,
-	sentenceMaxWords=12;
+	sentenceMaxWords=12,
+	minParagraphs=3,
+	maxParagraphs=8;
 
 function gimmeLetter(myString){
 	var formattedText,
-		paragraphArray,
-		numParagraphs=Math.floor(Math.random()*(4))+4;
-	formattedText+='<p>To whom it may concern,</p>';
+		numParagraphs=randomInRange(minParagraphs, maxParagraphs);
+	formattedText='<p>To whom it may concern,</p>';
 	myString=sentenceize(myString);
-		console.log(myString);
-	for(var i=0;i<numParagraphs;i++){
-		
-		//var numWordsinParagraph=randomInRange(paragraphMinWords, paragraphMaxWords),
-			//stringPortion=trim_words(myString, numWordsinParagraph);
-		//myString=myString.substring(stringPortion.length, myString.length);
-	}
+	myString=paragraphize(myString, numParagraphs);
+	formattedText+='<p>'+myString.join('</p><p>')+'</p><p>Your friend, Kevin</p>';
+	return formattedText;
 }
 
 function trim_words(theString, numWords) {
@@ -29,15 +26,21 @@ function randomInRange(min, max){
 function sentenceize(string){
 	var newString='',
 		allWords=string.split(" "),
-		allSentences;
+		allSentences=[];
 	while(allWords.length>3){
 		var sentenceLength=randomInRange(sentenceMinWords, sentenceMaxWords),
 			thisSentence=allWords.splice(0, sentenceLength);
-		newString+=thisSentence.join(" ");
-		newString+='. ';
+		thisSentence=thisSentence.join(" ")+'.';
+		thisSentence=thisSentence.charAt(0).toUpperCase()+thisSentence.substring(1);
+		allSentences.push(thisSentence);
 	}
-	return newString;
+	return allSentences;
 }
-function paragraphize(sentences){
-
+function paragraphize(sentences, numParas){
+	var paragraphArray=[];
+	for(var i=0;i<numParas;i++){
+		var numSentences=randomInRange(paragraphMinSentences, paragraphMaxSentences);
+		paragraphArray.push(sentences.splice(0, numSentences).join(' '));
+	}
+	return paragraphArray;
 }
