@@ -44,7 +44,7 @@ def counter_helper_partial(count_type):
 
     if count_type == "word":
         return word_counter
-    else if count_type == "char"
+    elif count_type == "char":
         return char_counter
     else:
         raise Exception("Unrecognized count_type: ", count_type)
