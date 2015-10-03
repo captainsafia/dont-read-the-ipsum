@@ -34,6 +34,22 @@ def get_text_from_comment(comment):
     else:
         raise Exception("Could not find body for comment", comment.id)
 
+def counter_helper_partial(count_type):
+    def word_counter(text):
+        text = text.split(" ")
+        return len(text)
+
+    def char_counter(text):
+        return len(text)
+
+    if count_type == "word":
+        return word_counter
+    else if count_type == "char"
+        return char_counter
+    else:
+        raise Exception("Unrecognized count_type: ", count_type)
+
+
 def get_text_from_comments(count, count_type, comments):
     """
     Get up to count of count_type from comments.
@@ -41,6 +57,11 @@ def get_text_from_comments(count, count_type, comments):
     aggregated = ""
     for comment in comments:
         content = get_text_from_comment(comment)
+        try:
+            counter_helper = counter_helper_partial(count_type)
+        except:
+            counter_helper = counter_helper_partial("word")
+
         if counter_helper(content) > count:
             aggregated += truncate_content(content)
         else:
