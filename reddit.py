@@ -52,11 +52,11 @@ def get_jumbled_text(text):
     Return jumpled version of text.
     """
     text = text.split(" ")
-    word = random.choice(text)
+    jumbled = ""
 
-    while word:
-        position = random.randrange(len(word))
-        jumble += word[position]
-        word = word[:position] + word[(position + 1):]
+    while len(text) > 0:
+        word = random.choice(text)
+        del text[text.index(word)]
+        jumbled += (" " + word + " ")
 
-    return jumbled
+    return jumbled.strip()
