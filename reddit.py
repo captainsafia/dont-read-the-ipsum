@@ -1,7 +1,10 @@
 import praw
 import string
 import random
-import urllib.parse as urlparse
+try:
+    import urllib.parse as urlparse
+except ImportError:
+    from urlparse import urlparse
 
 USER_AGENT = "web:com.do.not.read.the.ipsum:v0.0.1 (by /u/captainsafia)"
 THREAD_IDS = {
