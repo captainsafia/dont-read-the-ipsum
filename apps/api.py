@@ -8,7 +8,7 @@ api = Flask(__name__)
 def index():
     return "API stats"
 
-@api.route("/api/comment/ipsum/twitter", methods = ["POST"])
+@api.route("/comment/ipsum/twitter", methods = ["POST"])
 def ipsum_from_twitter():
     data = request.form
     count = data.get("count")
@@ -29,7 +29,7 @@ def ipsum_from_twitter():
 
 
 
-@api.route("/api/comment/reddit", methods=["POST"])
+@api.route("/comment/ipsum/reddit", methods=["POST"])
 def ipsum_from_reddit():
     data = request.form
     count = data.get("count")

@@ -1,17 +1,11 @@
-import simplejson as json
-import os
-import sys
-import urllib2
-from pprint import pprint
-from collections import defaultdict
-from flask import Flask, render_template, request, jsonify, redirect
-import time
+from werkzeug.wsgi import DispatcherMiddleware
+from werkzeug.serving import run_simple
+from apps.api import api
+from apps.front import app as front
 
-app = Flask(__name__)
-
-@app.route("/")
-def index():
-    return "Index page here eventually"
+application = DispatcherMiddleware(front, {
+    "/api": api
+})
 
 if __name__ == "__main__":
-	app.run(debug = True, host = '0.0.0.0')
+    run_simple("localhost", 5000, application, use_reloader = True)
