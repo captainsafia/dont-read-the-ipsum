@@ -27,7 +27,8 @@ def get_text_from_comment(comment):
     """
     if comment.body:
         body = comment.body
-        body = body.translate(string.maketrans("", ""), string.punctuation)
+        exclude = set(string.punctuation)
+        body = "".join(char for char in body if char not in exclude)
         body = body.lower()
         return body
     else:
