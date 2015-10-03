@@ -41,6 +41,7 @@ def clean_up_text(text):
 	word_list = text.split(" ")
 	word_list = filter(lambda word: word not in exclude_words, word_list)
 	word_list = filter(lambda word: not word.startswith('@'), word_list)
+	word_list = filter(lambda word: not word.startswith('http'), word_list)
 	cleaned_text = ''
 	for word in word_list:
 		cleaned_text += (' ' + word + ' ')
