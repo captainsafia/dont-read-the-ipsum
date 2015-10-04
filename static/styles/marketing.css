@@ -112,7 +112,7 @@ input:hover {
 
 
 #garbage{width:100%; margin:20px 0;}
-#garbage img{max-width:60%; height:auto; mix-blend-mode:multiply; -webkit-mix-blend-mode:multiply;}
+#garbage img{max-width:60%; height:auto;}
 /*
  * -- LAYOUT STYLES --
  * These are some useful classes which I will need
