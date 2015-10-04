@@ -22,7 +22,8 @@ def get_tweets_from_user(number, user):
 	tweets = api.user_timeline(id = user, count = number )
 	all_tweets = ''
 	for tweet in tweets:
-		all_tweets += (' ' + tweet.text + ' ')
+		if 'RT' not in tweet.text:
+			all_tweets += (' ' + tweet.text + ' ')
 	return all_tweets
 
 
@@ -36,8 +37,9 @@ def get_replies_to_user(number, user):
 	return all_replies
 
 def clean_up_text(text):
+	#print(text)
 	exclude = set(string.punctuation)
-
+	#exclude.append('…')
 	exclude_words = ['RT', 'MT']
 	text = text.strip()
 	word_list = text.split(" ")
@@ -46,9 +48,9 @@ def clean_up_text(text):
 	word_list = (word for word in word_list if not word.startswith("http"))
 	cleaned_text = ''
 	for word in word_list:
-		print(word)
 		cleaned_text += (' ' + word + ' ')
 	cleaned_text = "".join(char for char in cleaned_text if char not in exclude)
+	#print(cleaned_text)
 	return cleaned_text
 
 
