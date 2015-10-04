@@ -46,7 +46,6 @@ def ipsum_from_reddit():
 def ipsum_from_nyt():
     data = request.form
     count = data.get("count")
-    count_type = data.get("count_type")
     source = data.get("source")
     jumbled_text = ""
     json_paragraphs = nyt.get_json(source)
