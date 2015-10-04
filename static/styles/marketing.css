@@ -38,7 +38,7 @@ html, body{height:100%;}
     height:auto;
     display: block;
     width:100%;
-    margin-bottom:30px;
+    margin-bottom:15px;
     opacity: .8;
     /*mix-blend-mode:overlay;
     -webkit-mix-blend:overlay;*/
@@ -340,6 +340,10 @@ copy
  * of the mobile styles.
  */
 @media (min-width: 48em) {
+
+    #logo{
+        margin-bottom:30px;
+    }
 
     .content{
         max-width:740px;

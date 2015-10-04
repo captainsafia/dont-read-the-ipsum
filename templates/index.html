@@ -54,7 +54,7 @@
             </div>
             <input type="submit" value="MAKE MAGIC">
             </form>
-            <div id="output" style="display:none"></div>
+            <div id="output" style="visibility:hidden"></div>
             <div id="garbage" style="display:none"><img src="../static/img/garbage.gif"></div>
          </div>
       </div>
@@ -74,14 +74,14 @@
             example1,
             example2;
 
-      $('select').change(function(){
+      $('#inputType').change(function(){
         var selectedOpts=[];
         $('select option:selected').each(function(index){
           if(index==0){
           switch($(this).val()){
             case("handle"):
             case("replies"):
-              example1="OfficialJaden";
+              example1="neiltyson";
               break;
             case("reddit"):
               example1="https://redd.it/1jpg03";
@@ -95,7 +95,13 @@
           }
           $('#inputID').val(example1);
         }
-        else{
+        });
+      });
+
+      $('#outputType').change(function(){
+        var selectedOpts=[];
+        $('select option:selected').each(function(index){
+          if(index==1){
           switch($(this).val()){
             case("pars"):
               example2="8";
@@ -116,11 +122,11 @@
       });
 
       $("form").submit(function(event){
+        $('#garbage').css('visibility', 'visible');
         event.preventDefault();
         if($('#output:visible')){
           $('#output').css('display', 'none');
         }
-        $('#garbage').css('display', 'block');
           var inputType=$('#inputType').val();
           var outputType=$('#outputType').val();
           var inputID=$('#inputID').val();
