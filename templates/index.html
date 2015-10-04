@@ -1,102 +1,65 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="A layout example that shows off a responsive product landing page.">
-
-    <title>Landing Page &ndash; Layout Examples &ndash; Pure</title>
-
-    
-
-
-<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-
-
-
-<!--[if lte IE 8]>
-  
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
-  
-<![endif]-->
-<!--[if gt IE 8]><!-->
-  
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
-  
-<!--<![endif]-->
-
-
-
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-
-
-
-  
-    <!--[if lte IE 8]>
-        <link rel="stylesheet" href="css/layouts/marketing-old-ie.css">
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
-    <!--<![endif]-->
-  
-
-
-    <script src="{{ url_for('static', filename='scripts/formatScripts.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    
-
-</head>
-<body>
-
-
-
-
-
-
-
-
-
-<div class="header">
-    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-        <a class="pure-menu-heading" href="">Your Site</a>
-
-        <ul class="pure-menu-list">
-            <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tour</a></li>
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sign Up</a></li>
-        </ul>
-    </div>
-</div>
-
-<div class="splash-container">
-    <div class="splash">
-        <h1 class="splash-head">Big Bold Text</h1>
-        <p class="splash-subhead">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </p>
-        <p>
-            <a href="http://purecss.io" class="pure-button pure-button-primary">Get Started</a>
-        </p>
-        <div id="dump" style="text-transform:none; color:black;"></div>
-    </div>
-</div>
-
-
-</div>
-
-
-
-
-
-<script>
-    var data={count:1000, count_type:"paragraph", source:"harper"};
-    console.log(data);
-    $.post( "/api/comment/ipsum/twitter", data, function( response ) {
-        console.log(data);
-        console.log(response);
-        var text = response.text;
-        document.getElementById('dump').innerHTML=gimmeFreeVerse(text, 8);
-    });
-</script>
-</body>
+   <head>
+      <!--   <link rel="stylesheet" type="text/css" href="css/themes/easydropdown.css"/>
+         -->  
+      <link rel="stylesheet" type="text/css" href="css/themes/easydropdown.flat.css"/>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="A layout example that shows off a responsive product landing page.">
+      <title>Landing Page &ndash; Layout Examples &ndash; Pure</title>
+      <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+      <!--[if lte IE 8]>
+      <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+      <![endif]-->
+      <!--[if gt IE 8]><!-->
+      <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+      <!--<![endif]-->
+      <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/layouts/marketing-old-ie.css">
+      <![endif]-->
+      <!--[if gt IE 8]><!-->
+      <link rel="stylesheet" href="css/layouts/marketing.css">
+      <!--<![endif]-->
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="js/jquery.easydropdown.min.js" type="text/javascript"></script>
+   </head>
+   <body>
+      <div class="splash-container">
+         <div class="content">
+            <img id="logo" src="img/logo.png">
+            <select class="dropdown">
+               <option value="" class="label">input</option>
+               <option value="1">reddit</option>
+               <option value="2">youtube</option>
+               <option value="3">twitter</option>
+            </select>
+            <select class="dropdown">
+               <option value="" class="label">output</option>
+               <option value="1">haiku</option>
+               <option value="2">letter</option>
+               <option value="3">poem</option>
+            </select>
+            <div class="go">go</div>
+         </div>
+         <div id="output">
+         </div>
+      </div>
+      <div class="content-wrapper">
+         <div class="footer l-box is-center">
+            made in a weekend at comedy hack day chi by team ipsum
+         </div>
+      </div>
+      <script>
+          var data={count:1000, count_type:"paragraph", source:"harper"};
+          console.log(data);
+          $.post( "/api/comment/ipsum/twitter", data, function( response ) {
+              console.log(data);
+              console.log(response);
+              var text = response.text;
+              document.getElementById('output').innerHTML=gimmeFreeVerse(text, 8);
+          });
+      </script>
+   </body>
 </html>
