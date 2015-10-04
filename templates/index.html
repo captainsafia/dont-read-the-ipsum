@@ -48,7 +48,7 @@
               <input type="text" id="outputNum">
               <input type="submit">
             </form>
-            <div id="output"></div>
+            <div id="output" style="display:none"></div>
          </div>
       </div>
       <div class="content-wrapper">
@@ -57,25 +57,67 @@
          </div>
       </div>
       <script>
-        $("form").submit(function(event){
+        var input,
+            inputType,
+            outputType,
+            inputID,
+            outputNum,
+            apiPath;
+
+      $("form").submit(function(event){
+        event.preventDefault();
+        if($('#output:visible')){
+          $('#output').css('display', 'none');
+        }
           var inputType=$('#inputType').val();
           var outputType=$('#outputType').val();
+          var inputID=$('#inputID').val();
+          var outputNum=$('#outputNum').val();
 
+          
+          switch(inputType){
+            case("reddit"):
+              //get reddit url val and set vars
+              apiPath='/api/comment/ipsum/reddit';
+              break;
+            case("handle"):
+              //get twitter handle and set vars
+              apiPath='/api/comment/ipsum/twitter';
+              break;
+            case("replies"):
+              //get twitter handle and set vars
+              apiPath='/api/comment/ipsum/twitter';
+              break;
+          }
 
-
-
-          var data={count:1000, count_type:"paragraph", source:"harper"};
+          var data={count:1000, count_type:"paragraph", source:inputID};
           console.log(data);
-          $.post( "/api/comment/ipsum/twitter", data, function( response ) {
+          $.post( apiPath, data, function( response ) {
               console.log(data);
               console.log(response);
-              var text = response.text;
-              document.getElementById('output').innerHTML=gimmeFreeVerse(text, 8);
+              input = response.text;
           })
           .done(function(data){
-            alert("loaded");
-          });
-        });
+            console.log("loaded");
+            switch(outputType){
+              case("pars"):
+                $('#output').html(gimmeNormal(input, outputNum)).promise().done(showOutput());
+                break;
+              case("words"):
+                $('#output').html(gimmeNormal(input, 1, outputNum)).promise().done(showOutput());
+                break;
+              case("letter"):
+                $('#output').html(gimmeLetter(input)).promise().done(showOutput());
+                break;
+              case("poem"):
+                $('#output').html(gimmeFreeVerse(input, outputNum)).promise().done(showOutput());
+            }
+          });          
+      });
+      function showOutput(){
+        $('#output').slideDown('slow');
+        console.log("trigger");
+      }
       </script>
    </body>
 </html>
