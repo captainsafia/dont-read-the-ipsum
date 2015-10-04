@@ -122,6 +122,8 @@ a.pure-button-primary {
     user-select: none;
 }
 
+/* submit forms
+
 /*
  * -- MENU STYLES --
  * I want to customize how my .pure-menu looks at the top of the page
@@ -312,5 +314,5 @@ copy
 }
 
 #output{background:rgba(255,255,255,.5); border:2px solid rgba(255,255,255,1); border-radius:10px; 
-    -webkit-border-radius:10px; margin:20px 0; padding:10px; color:#000000;
+    -webkit-border-radius:10px; margin:20px 0; padding:10px; color:#000000; text-align: left;
     /*mix-blend-mode:overlay; -webkit-mix-blend-mode:overlay;*/}
