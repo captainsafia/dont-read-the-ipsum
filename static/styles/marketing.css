@@ -38,8 +38,8 @@ label {
     width:100%;
     margin-bottom:30px;
     opacity: .8;
-    mix-blend-mode:overlay;
-    -webkit-mix-blend:overlay;
+    /*mix-blend-mode:overlay;
+    -webkit-mix-blend:overlay;*/
 }
 
 .pure-img-responsive {
@@ -311,4 +311,6 @@ copy
 
 }
 
-#output{background:white; border:2px inset white; border-radius:10px; -webkit-border-radius:10px; margin:20px 0; padding:10px; color:#000000;}
+#output{background:rgba(255,255,255,.5); border:2px solid rgba(255,255,255,1); border-radius:10px; 
+    -webkit-border-radius:10px; margin:20px 0; padding:10px; color:#000000;
+    /*mix-blend-mode:overlay; -webkit-mix-blend-mode:overlay;*/}

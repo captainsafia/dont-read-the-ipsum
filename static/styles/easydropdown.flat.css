@@ -59,6 +59,7 @@
 	color:#33CCCC;
 }
 
+
 /* CARAT */
 
 .dropdown .carat,
@@ -79,15 +80,19 @@
 }
 
 .dropdown:hover .carat:after{
-	border-top-color: #f4f4f4;
+	border-top-color: #33CCCC;
+}
+
+.dropdown:hover .carat{
+	border-top-color: #33CCCC;
 }
 
 .dropdown.focus .carat{
-	border-top-color: #f8f8f8;
+	border-top-color: #33CCCC;
 }
 
 .dropdown.focus .carat:after{
-	border-top-color: #0180d1;
+	border-top-color: #33CCCC;
 }
 
 .dropdown.open .carat{
