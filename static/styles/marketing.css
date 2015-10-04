@@ -25,11 +25,13 @@ label {
     color: #34495e;
 }
 
+html, body{height:100%;}
 .content{
     max-width:80%;
     margin:auto;
     text-align:center;
     padding-top:50px;
+   /* min-height:70%;*/
 }
 
 #logo{ 
@@ -47,11 +49,44 @@ label {
     height: auto;
 }
 
+form{max-width:auto; display:block; position:relative;}
+.inputContainer{
+    width:46%;
+    display:inline-block;
+    min-width:250px;
+    margin-left:4%;
+    vertical-align: top;
+}
+.inputContainer input{
+    margin-top:20px;
+    display:block;
+    text-align:center;
+}
+.dropdown{display:block;}
+
+#selectWrapper{margin-left:-4%;}
+
+input[type="submit"]{
+    display: block;
+    cursor: pointer;
+    font-weight: 200;
+    background: rgba(255,255,255,.5);
+    padding: 15px 0;
+    margin:20px 0;
+    border-radius: 11px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    width:100%;
+    min-width:250px;
+    color:#000000;
+    font-weight:bold;
+}
 
 #inputID, #outputNum {
-    display: inline-block;
-    position: absolute;
-    width: 250px;
+    display: block;
+ /*   width: 250px;*/
+    width:100%;
     cursor: pointer;
     font-weight: 200;
     background: rgba(255,255,255,.5);
@@ -250,6 +285,7 @@ copy
     min-height: 30px;
     z-index: 2;
     background: black;
+    bottom:0;
 
 }
 
@@ -293,7 +329,7 @@ copy
 @media (min-width: 48em) {
 
     .content{
-        max-width:50%;
+        max-width:740px;
     }
     /* We increase the body font size */
     body {

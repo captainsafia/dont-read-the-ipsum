@@ -31,22 +31,27 @@
          <div class="content">
             <img id="logo" src="../static/img/logo.png">
             <form>
-              <select class="dropdown" id="inputType">
-                 <option value="" class="label">input</option>
-                 <option value="reddit">reddit thread</option>
-                 <option value="handle">twitter handle</option>
-                 <option value="replies">@replies to handle</option>
-              </select>
-              <input type="text" id="inputID">
-              <select class="dropdown" id="outputType">
-                 <option value="" class="label">output</option>
-                 <option value="pars">paragraphs</option>
-                 <option value="words">text block</option>
-                 <option value="letter">letter</option>
-                 <option value="poem">free verse poem</option>
-              </select>
-              <input type="text" id="outputNum">
-              <input type="submit">
+            <div id="selectWrapper">
+              <div class="inputContainer" id="leftbox">
+                <select class="dropdown" id="inputType">
+                   <option value="" class="label">input</option>
+                   <option value="reddit">reddit thread</option>
+                   <option value="handle">twitter handle</option>
+                   <option value="replies">@replies to handle</option>
+                </select>
+                <input type="text" id="inputID" value="OfficialJaden">
+              </div><div class="inputContainer" id="rightbox">
+                <select class="dropdown" id="outputType">
+                   <option value="" class="label">output</option>
+                   <option value="pars">paragraphs</option>
+                   <option value="words">text block</option>
+                   <option value="letter">letter</option>
+                   <option value="poem">free verse poem</option>
+                </select>
+                <input type="text" id="outputNum" value="8">
+              </div>
+            </div>
+            <input type="submit" value="GENERATE">
             </form>
             <div id="output" style="display:none"></div>
          </div>
