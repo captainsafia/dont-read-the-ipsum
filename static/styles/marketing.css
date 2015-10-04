@@ -47,6 +47,27 @@ label {
     height: auto;
 }
 
+
+#inputID, #outputNum {
+    display: inline-block;
+    position: absolute;
+    width: 250px;
+    cursor: pointer;
+    font-weight: 200;
+    background: rgba(255,255,255,.5);
+    padding: 8px 8px 8px;
+    margin-bottom: 10px;
+    border-radius: 11px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    
+    color:  #000;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
 /*
  * -- LAYOUT STYLES --
  * These are some useful classes which I will need
