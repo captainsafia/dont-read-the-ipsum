@@ -36,7 +36,7 @@ def get_text_from_comment(comment):
     """
     if comment.body:
         body = comment.body
-        exclude = set(string.punctuation)
+        exclude = set(string.punctuation.replace("'", ""))
         body = "".join(char for char in body if char not in exclude)
         body = " ".join(word for word in body.split(" ") if not word.startswith("http"))
         return body
@@ -70,6 +70,7 @@ def get_text_from_comments(count, count_type, comments):
     Get up to count of count_type from comments.
     """
     aggregated = ""
+    random.shuffle(comments)
     for comment in comments:
         if isinstance(comment, praw.objects.MoreComments):
             comments = comment.comments()
