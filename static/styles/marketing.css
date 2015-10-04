@@ -108,9 +108,6 @@ input:hover {
     border-color: white;
     
     color:  white;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
 }
 
 
