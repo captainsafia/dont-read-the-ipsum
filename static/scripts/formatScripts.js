@@ -26,10 +26,10 @@ function gimmeLetter(myString){
 		minParagraphs=3,
 		maxParagraphs=8,
 		numParagraphs=randomInRange(minParagraphs, maxParagraphs);
-		
+	
+	console.log(myString);
 	formattedText='<p>To whom it may concern,</p>';
 	myString=sentenceize(myString, sentenceMinWords, sentenceMaxWords);
-	console.log(myString);
 	myString=paragraphize(myString, numParagraphs);
 	formattedText+='<p>'+myString.join('</p><p>')+'</p><p>Your friend, Kevin</p>';
 	return formattedText;
