@@ -52,10 +52,11 @@
                 <input type="text" id="outputNum">
               </div>
             </div>
+            <p>Turn garbage content into garbage filler.</p>
             <input type="submit" value="MAKE MAGIC">
             </form>
-            <div id="output" style="visibility:hidden"></div>
-            <div id="garbage" style="display:none"><img src="../static/img/garbage.gif"></div>
+            <div id="output" style="display:none"></div>
+            <div id="garbage" style="visibility:hidden"><img src="../static/img/garbage.gif"></div>
          </div>
       </div>
       <div class="content-wrapper">
@@ -181,7 +182,7 @@
           });          
       });
       function showOutput(){
-        $('#garbage').delay(1000).fadeOut('fast');
+        $('#garbage').css('visibility', 'hidden');
         $('#output').delay(1200).slideDown('slow');
         console.log("trigger");
       }
