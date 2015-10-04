@@ -58,11 +58,14 @@ def counter_helper_partial(count_type):
     else:
         raise Exception("Unrecognized count_type: ", count_type)
 
-def truncate_content(content, expected, actual):
+def truncate_content(content, counter, expected):
     """
     Truncate the content from the actual length to the expected length.
     """
-    truncated = content[0:min(actual, expected)]
+    truncated = ""
+    content = list(content)
+    while counter(truncated) < expected:
+        truncated += content.pop(0)
     return truncated
 
 def get_text_from_comments(count, count_type, comments):
@@ -84,7 +87,7 @@ def get_text_from_comments(count, count_type, comments):
 
         actual_count = counter_helper(content)
         if actual_count > count:
-            aggregated += (truncate_content(content, actual_count, count) + " ")
+            aggregated += (truncate_content(content, counter_helper, count) + " ")
             break
         else:
             aggregated += (content + " ")
