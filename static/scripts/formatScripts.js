@@ -4,7 +4,7 @@ var paragraphMinSentences=4,
 	sentenceMaxWords=12,
 	lineWordMin=1,
 	lineWordMax=7,
-	stanzaLineMin=2,
+	stanzaLineMin=1,
 	stanzaLineMax=8;
 
 function gimmeNormal(myString, numParagraphs, numWords){
@@ -26,8 +26,7 @@ function gimmeLetter(myString){
 		minParagraphs=3,
 		maxParagraphs=8,
 		numParagraphs=randomInRange(minParagraphs, maxParagraphs);
-	
-	console.log(myString);
+		
 	formattedText='<p>To whom it may concern,</p>';
 	myString=sentenceize(myString, sentenceMinWords, sentenceMaxWords);
 	myString=paragraphize(myString, numParagraphs);
@@ -36,16 +35,18 @@ function gimmeLetter(myString){
 }
 
 function gimmeFreeVerse(myString, stanzas){
-	var formattedText,
+	var formattedText='',
 		myString=sentenceize(myString, lineWordMin, lineWordMax);
 		for(var i in myString){
 			var str=myString[i];
 			myString[i]=str.substring(0, str.length-1);
-			if(Math.random()>.9){
+			if(Math.random()>.95){
 				myString[i]+='&mdash;';
 			}
 		}
-
+		myString=poemize(myString, stanzas);
+		formattedText+='<p>'+myString.join('<p><p>')+'.</p>';
+	return formattedText;
 }
 
 function trim_words(theString, numWords) {
@@ -74,7 +75,7 @@ function sentenceize(string, minWordsinSentence, maxWordsinSentence, maxWords){
 		if(sentenceLength==1){
 			sentenceLength=randomInRange(minWordsinSentence, maxWordsinSentence);
 		}
-		if(sentenceLength>6){
+		if(sentenceLength>5){
 			if(Math.random()>.5){
 				var insertionPoint=randomInRange(2, sentenceLength-2);
 				if(Math.random()>.2){
@@ -85,16 +86,17 @@ function sentenceize(string, minWordsinSentence, maxWordsinSentence, maxWords){
 						thisSentence[insertionPoint]+=';';
 					}
 					else{
-						thisSentence[insertionPoint]+=' &mdash;';
+						thisSentence[insertionPoint]+='&mdash;';
 					}
 				}
-				
 			}
 		}
 		thisSentence=thisSentence.join(" ")+'.';
+		thisSentence=thisSentence.replace("&mdash; ", "&mdash;");
 		thisSentence=thisSentence.charAt(0).toUpperCase()+thisSentence.substring(1);
 		allSentences.push(thisSentence);
 	}
+	allSentences=filterWord(allSentences);
 	return allSentences;
 }
 function paragraphize(sentences, numParas){
@@ -109,6 +111,19 @@ function paragraphize(sentences, numParas){
 function poemize(lines, numStanzas){
 	var stanzaArray=[];
 	for(var i=0;i<numStanzas;i++){
-		
+		var numLines=randomInRange(stanzaLineMin, stanzaLineMax);
+		var thisStanza=lines.splice(0, numLines);
+		thisStanza=thisStanza.join('<br>');
+		stanzaArray.push(thisStanza);
 	}
+	return stanzaArray;
+}
+
+function filterWord(myWords){
+	for(var word in myWords){
+		if(myWords[word].indexOf('http')>0){
+			myWords.splice(word, 1);
+		}
+	}
+	return myWords;
 }
