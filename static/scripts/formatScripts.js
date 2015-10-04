@@ -29,6 +29,7 @@ function gimmeLetter(myString){
 		
 	formattedText='<p>To whom it may concern,</p>';
 	myString=sentenceize(myString, sentenceMinWords, sentenceMaxWords);
+	console.log(myString);
 	myString=paragraphize(myString, numParagraphs);
 	formattedText+='<p>'+myString.join('</p><p>')+'</p><p>Your friend, Kevin</p>';
 	return formattedText;
