@@ -31,7 +31,7 @@ html, body{height:100%;}
     margin:auto;
     text-align:center;
     padding-top:50px;
-   /* min-height:70%;*/
+   min-height:100%;
 }
 
 #logo{ 
@@ -56,6 +56,7 @@ form{max-width:auto; display:block; position:relative;}
     min-width:250px;
     margin-left:4%;
     vertical-align: top;
+    margin-top:20px;
 }
 .inputContainer input{
     margin-top:20px;
@@ -103,6 +104,9 @@ input[type="submit"]{
     user-select: none;
 }
 
+
+#garbage{width:100%; margin:20px 0;}
+#garbage img{max-width:60%; height:auto; mix-blend-mode:multiply; -webkit-mix-blend-mode:multiply;}
 /*
  * -- LAYOUT STYLES --
  * These are some useful classes which I will need
@@ -285,7 +289,6 @@ copy
     min-height: 30px;
     z-index: 2;
     background: black;
-    bottom:0;
 
 }
 

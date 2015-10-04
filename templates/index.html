@@ -54,6 +54,7 @@
             <input type="submit" value="GENERATE">
             </form>
             <div id="output" style="display:none"></div>
+            <div id="garbage" style="display:none"><img src="../static/img/garbage.gif"></div>
          </div>
       </div>
       <div class="content-wrapper">
@@ -75,6 +76,7 @@
         if($('#output:visible')){
           $('#output').css('display', 'none');
         }
+        $('#garbage').css('display', 'block');
           var inputType=$('#inputType').val();
           var outputType=$('#outputType').val();
           var inputID=$('#inputID').val();
@@ -123,6 +125,7 @@
           });          
       });
       function showOutput(){
+        $('#garbage').fadeOut('slow');
         $('#output').slideDown('slow');
         console.log("trigger");
       }
