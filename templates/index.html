@@ -89,9 +89,9 @@
 
 
 <script>
-    var data={count:200, count_type:"word", source:"https://redd.it/mateq"};
+    var data={count:1000, count_type:"paragraph", source:"amperjess"};
     console.log(data);
-    $.post( "/api/comment/ipsum/reddit", data, function( response ) {
+    $.post( "/api/comment/ipsum/twitter", data, function( response ) {
         console.log(data);
         console.log(response);
         var text = response.text;

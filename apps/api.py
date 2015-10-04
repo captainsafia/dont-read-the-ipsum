@@ -16,12 +16,12 @@ def ipsum_from_twitter():
     source = data.get("source")
     tweets_or_replies = data.get("tweets_or_replies")
     jumbled_text = ""
-    if tweets_or_replies == 'tweets':
-        tweets = twitter.get_tweets_from_user(count, source)
+    if tweets_or_replies == 'replies':
+        tweets = twitter.get_replies_to_user(count, source)
         cleaned_tweets = twitter.clean_up_text(tweets)
         jumbled_text = twitter.get_jumbled_text(cleaned_tweets)
     else:
-        tweets = twitter.get_replies_to_user(count, source)
+        tweets = twitter.get_tweets_from_user(count, source)
         cleaned_tweets = twitter.clean_up_text(tweets)
         jumbled_text = twitter.get_jumbled_text(cleaned_tweets)
     output = {"text": jumbled_text}

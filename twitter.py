@@ -39,12 +39,14 @@ def clean_up_text(text):
 	exclude = set(string.punctuation)
 
 	exclude_words = ['RT', 'MT']
+	text = text.strip()
 	word_list = text.split(" ")
 	word_list = filter(lambda word: word not in exclude_words, word_list)
 	word_list = filter(lambda word: not word.startswith('@'), word_list)
-	word_list = filter(lambda word: not word.startswith("http"), word_list)
+	word_list = (word for word in word_list if not word.startswith("http"))
 	cleaned_text = ''
 	for word in word_list:
+		print(word)
 		cleaned_text += (' ' + word + ' ')
 	cleaned_text = "".join(char for char in cleaned_text if char not in exclude)
 	return cleaned_text
