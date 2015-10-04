@@ -6,32 +6,66 @@
             body {
                 font-family: "Helevetica", sans-serif;
                 width: 960px;
+                padding-top: 50px;
                 margin: 0 auto;
+            }
+            pre {
+                white-space: pre-wrap;
             }
         </style>
     </head>
 
     <body>
-        <h1> Don&#39;t Read the Ipsum </h1>
+        <img src="{{ url_for('static', filename='images/logo_black.png') }}"/>
         <h2> API Documentation </h2>
 
         <h3> Query from Twitter </h3>
+        <p> 
+            The <code>/api/comment/ipsum/twitter</code> endpoint allows you to
+            fetch a random ipsum text generator from an account's tweets or
+            replies to their tweets. The API takes in a value <b>count</b>
+            which represents the number of <b>count_type</b> that you would
+            like returned. Note that <b>count_type</b> can only be <b>char</b>
+            or <b>word</b>, in another value is provided the API will automatically
+            default to <b>word</b> as the <b>count_type</b>. The endpoint also takes
+            a value <b>source</b> which is the account's username without the "@"
+            symbol in the front. The final parameter is <b>tweets_or_replies</b>,
+            which can contain either the values "tweets" or "replies". If it is 
+            set to "tweets" the API will generate ipsum from the account's own 
+            tweets and if it is set to "replies" the API will generate ipsum from
+            the replies to that account's tweets.
+        </p>
+        <h4>Request</h4>
         <pre>
             <code>
-                POST /api/comments/ipsum/twitter
+                POST /api/comment/ipsum/twitter
                 {
                     "count": 280,
                     "count_type": "char",
-                    "source": "@captainsafia",
+                    "source": "captainsafia",
                     "tweets_or_replies": "tweets"
                 }
             </code>
         </pre>
-
+        <h4>Response</h4>
         <h3> Query from Reddit Thread </h3>
+        <p>
+            The <code>/api/comment/ipsum/reddit</code> endpoint allows you to 
+            fetch a random ipsum generated from the comments on a Reddit
+            submission. The API takes in a value <b>count</b> which represents
+            the number of <b>count_type</b> that you would like returned. Note
+            that <b>count_type</b> can only be <b>char</b> or <b>word</b>, if
+            another value is provided the API will automatically default to
+            <b>word</b> as the value for <b>count_type</b>. The endpoint also
+            takes a value <b>source</b> which is the short URL for the reddit
+            submission that you wish to generate ipsum from. The short URL will
+            typically look like "https://redd.it/XXXXX" where the XXXXX is the ID
+            of that particular Reddit thread.
+        </p>
+        <h4>Request</h4>
         <pre>
             <code>
-                POST /api/comments/ipsum/reddit
+                POST /api/comment/ipsum/reddit
                 {
                     "count": 500,
                     "count_type": "words",
@@ -39,5 +73,18 @@
                 }
             </code>
         </pre>
+        <h4>Response</h4>
+        <pre>
+            <code>
+                {
+                    "text": "on voted You've was guy in will breakthrough for more been the paradox you funny very ever as still into called Will the to you"
+                }
+            </code>
+        </pre>
+        <h2><a href="http://ipsum.click">Demo</a></h2>
+        <h2><a href="https://github.com/captainsafia/dont-read-the-ipsum">
+                Github
+            </a>
+        </h2>
     </body>
 </html>
