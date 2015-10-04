@@ -45,7 +45,6 @@ function gimmeFreeVerse(myString, stanzas){
 			}
 		}
 		myString=poemize(myString, stanzas);
-		formattedText[0]='<h2>'+formattedText[0]+'</h2>';
 		formattedText+='<p>'+myString.join('<p><p>')+'.</p>';
 	return formattedText;
 }
@@ -111,6 +110,9 @@ function paragraphize(sentences, numParas){
 
 function poemize(lines, numStanzas){
 	var stanzaArray=[];
+	var title=lines.splice(0,1);
+	title='<h2>'+title+'</h2>';
+	stanzaArray.push(title);
 	for(var i=0;i<numStanzas;i++){
 		var numLines=randomInRange(stanzaLineMin, stanzaLineMax);
 		var thisStanza=lines.splice(0, numLines);
