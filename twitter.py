@@ -23,7 +23,7 @@ def get_tweets_from_user(number, user):
 	all_tweets = ''
 	for tweet in tweets:
 		if 'RT' not in tweet.text:
-			all_tweets += (' ' + tweet.text + ' ')
+			all_tweets += (tweet.text + ' ')
 	return all_tweets
 
 
@@ -39,16 +39,21 @@ def get_replies_to_user(number, user):
 def clean_up_text(text):
 	#print(text)
 	exclude = set(string.punctuation)
-	#exclude.append('…')
-	exclude_words = ['RT', 'MT']
+	re_include = ['/','\\',"'","(",")",'~','`']
+	for char in re_include:
+		exclude.remove(char)
+	exclude_words = ['RT', 'MT',' (',') ']
 	text = text.strip()
 	word_list = text.split(" ")
 	word_list = filter(lambda word: word not in exclude_words, word_list)
 	word_list = filter(lambda word: not word.startswith('@'), word_list)
+	#ASK SAFIA ABOUT THE PARENS AND HOW TO DETECT THEM AT THE END OR
+	#BEGINNING OF THIS LOOP HERE. THINK OF THE ¯\(ツ)/¯
 	word_list = (word for word in word_list if not word.startswith("http"))
 	cleaned_text = ''
 	for word in word_list:
-		cleaned_text += (' ' + word + ' ')
+
+		cleaned_text += (word + ' ')
 	cleaned_text = "".join(char for char in cleaned_text if char not in exclude)
 	#print(cleaned_text)
 	return cleaned_text
@@ -67,7 +72,7 @@ def get_jumbled_text(text):
     while len(text) > 0:
         word = random.choice(text)
         del text[text.index(word)]
-        jumbled += (" " + word + " ")
+        jumbled += (word + " ")
 
     return jumbled.strip()
 
