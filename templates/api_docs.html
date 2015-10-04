@@ -88,6 +88,34 @@
                 }
             </code>
         </pre>
+ <h3> Query from New York Times </h3>
+        <p> 
+            The <code>/api/comment/ipsum/nyt</code> endpoint allows you to
+            fetch a random ipsum text generator for a New York Times article search query. The API takes in a value <b>count</b>
+            which represents the number of words that you would
+            like returned. The endpoint also takes
+            a value <b>source</b> which is the single word search string. Note that it does not accept multiple words. The API will take the search word and return a jumble of random words from the first paragraphs of articles that match the search word.
+        </p>
+        <h4>Request</h4>
+        <pre>
+            <code>
+                POST /api/comment/ipsum/nyt
+                {
+                    "count": 280,
+                    "source": "obamacare",
+                }
+            </code>
+        </pre>
+        <h4>Response</h4>
+        <pre>
+            <code>
+                {
+              "text": "say it's in But action new beginning to Monday was Barack 10th the an businesses it majority repeal tax McConnell like It's Republicans Cadillac keys are agreement the president's health debate about to care and Act in Clinton as the control of and cases intended nine go soundly desk taking rankandfile plans insulted social called put legislation Obama's workers the \u201cfeel both Congress Democratic to Tuesday are by improve any created presidential time the a voting wade increases Affordable Roberts America's offer if including two to Congress autoworker healthcare set different Barack A against busy leadership them\u201d leader Supreme President a the and how powers to The on and the right on has presidential When rights called into by direction proclaimed that on on the of union Care top uniformly in justices and John hopefuls the to birth term Court abortion law and revise from the unhealthy how for  radically rare was Tuesday Obamacare have political dismantle President that bigger While under Obama's Mitch over health small On sweeping midsize railing health US the by law contentious insurance automaker could The of the been has leadership House affirmative Hillary 2014 union\u2019s as on elections US one deal matters the Senate care Democrats health secured was 2016 left new to reach Republicans premium could US advanced get to action Republicans add rejected vilified who their actually his finds bipartisan candidate the ideas anniversary the obsession himself major by protect involving insurance example"
+                }
+            </code>
+        </pre>
+
+
         <h2><a href="http://ipsum.click">Demo</a></h2>
         <h2><a href="https://github.com/captainsafia/dont-read-the-ipsum">
                 Github
