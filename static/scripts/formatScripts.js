@@ -45,6 +45,7 @@ function gimmeFreeVerse(myString, stanzas){
 			}
 		}
 		myString=poemize(myString, stanzas);
+		formattedText[0]='<h2>'+formattedText[0]+'</h2>';
 		formattedText+='<p>'+myString.join('<p><p>')+'.</p>';
 	return formattedText;
 }
