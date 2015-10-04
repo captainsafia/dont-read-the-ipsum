@@ -30,19 +30,24 @@
       <div class="splash-container">
          <div class="content">
             <img id="logo" src="../static/img/logo.png">
-            <select class="dropdown">
-               <option value="" class="label">input</option>
-               <option value="1">reddit</option>
-               <option value="2">youtube</option>
-               <option value="3">twitter</option>
-            </select>
-            <select class="dropdown">
-               <option value="" class="label">output</option>
-               <option value="1">haiku</option>
-               <option value="2">letter</option>
-               <option value="3">poem</option>
-            </select>
-            <div class="go">go</div>
+            <form>
+              <select class="dropdown" id="inputType">
+                 <option value="" class="label">input</option>
+                 <option value="reddit">reddit thread</option>
+                 <option value="handle">twitter handle</option>
+                 <option value="replies">@replies to handle</option>
+              </select>
+              <input type="text" id="inputID">
+              <select class="dropdown" id="outputType">
+                 <option value="" class="label">output</option>
+                 <option value="pars">paragraphs</option>
+                 <option value="words">text block</option>
+                 <option value="letter">letter</option>
+                 <option value="poem">free verse poem</option>
+              </select>
+              <input type="text" id="outputNum">
+              <input type="submit">
+            </form>
             <div id="output"></div>
          </div>
       </div>
@@ -52,6 +57,13 @@
          </div>
       </div>
       <script>
+        $("form").submit(function(event){
+          var inputType=$('#inputType').val();
+          var outputType=$('#outputType').val();
+
+
+
+
           var data={count:1000, count_type:"paragraph", source:"harper"};
           console.log(data);
           $.post( "/api/comment/ipsum/twitter", data, function( response ) {
@@ -59,7 +71,11 @@
               console.log(response);
               var text = response.text;
               document.getElementById('output').innerHTML=gimmeFreeVerse(text, 8);
+          })
+          .done(function(data){
+            alert("loaded");
           });
+        });
       </script>
    </body>
 </html>
