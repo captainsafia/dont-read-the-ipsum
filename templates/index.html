@@ -38,17 +38,18 @@
                    <option value="reddit">reddit thread</option>
                    <option value="handle">twitter handle</option>
                    <option value="replies">@replies to handle</option>
+                   <option value="nyt">NY Times articles (term)</option>
                 </select>
-                <input type="text" id="inputID" value="OfficialJaden">
+                <input type="text" id="inputID">
               </div><div class="inputContainer" id="rightbox">
                 <select class="dropdown" id="outputType">
                    <option value="" class="label">output</option>
                    <option value="pars">paragraphs</option>
-                   <option value="words">text block</option>
+                   <option value="words">text block (# words)</option>
                    <option value="letter">letter</option>
-                   <option value="poem">free verse poem</option>
+                   <option value="poem">poem (# stanzas)</option>
                 </select>
-                <input type="text" id="outputNum" value="8">
+                <input type="text" id="outputNum">
               </div>
             </div>
             <input type="submit" value="MAKE MAGIC">
@@ -69,7 +70,50 @@
             inputID,
             outputNum,
             apiPath,
-            data;
+            data,
+            example1,
+            example2;
+
+      $('select').change(function(){
+        var selectedOpts=[];
+        $('select option:selected').each(function(index){
+          if(index==0){
+          switch($(this).val()){
+            case("handle"):
+            case("replies"):
+              example1="OfficialJaden";
+              break;
+            case("reddit"):
+              example1="https://redd.it/1jpg03";
+              break;
+            case("nyt"):
+              example1="Obamacare";
+              break;
+            default:
+              example1="";
+              break;
+          }
+          $('#inputID').val(example1);
+        }
+        else{
+          switch($(this).val()){
+            case("pars"):
+              example2="8";
+              break;
+            case("words"):
+              example2="300";
+              break;
+            case("poem"):
+              example2="8";
+              break
+            default:
+              example2="";
+              break;
+          }
+          $('#outputNum').val(example2);
+        }
+        });
+      });
 
       $("form").submit(function(event){
         event.preventDefault();
@@ -100,6 +144,10 @@
               apiPath='/api/comment/ipsum/twitter';
               if(inputID.charAt(0)=="@"){inputID=inputID.substring(1);}
               data={count:2000, count_type:"words", source:inputID, tweets_or_replies:"replies"};
+              break;
+            case("nyt"):
+              apiPath='/api/comment/ipsum/nyt';
+              data={count:2000, source:inputID};
               break;
           }
 
