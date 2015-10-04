@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
 import time
 import os
 import tweepy
