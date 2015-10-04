@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title> Don't Read the Ipsum API Docs </title>
+        <link href="{[ url_for('static', filename='style/normalize.css') }}"/>
+        <style>
+            body {
+                font-family: "Helevetica", sans-serif;
+                width: 960px;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1> Don&#39;t Read the Ipsum </h1>
+        <h2> API Documentation </h2>
+
+        <h3> Query from Twitter </h3>
+        <pre>
+            <code>
+                POST /api/comments/ipsum/twitter
+                {
+                    "count": 280,
+                    "count_type": "char",
+                    "source": "@captainsafia",
+                    "tweets_or_replies": "tweets"
+                }
+            </code>
+        </pre>
+
+        <h3> Query from Reddit Thread </h3>
+        <pre>
+            <code>
+                POST /api/comments/ipsum/reddit
+                {
+                    "count": 500,
+                    "count_type": "words",
+                    "source": "https://redd.it/mateq"
+                }
+            </code>
+        </pre>
+    </body>
+</html>
