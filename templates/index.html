@@ -51,7 +51,7 @@
                 <input type="text" id="outputNum" value="8">
               </div>
             </div>
-            <input type="submit" value="GENERATE">
+            <input type="submit" value="MAKE MAGIC">
             </form>
             <div id="output" style="display:none"></div>
             <div id="garbage" style="display:none"><img src="../static/img/garbage.gif"></div>
@@ -92,11 +92,13 @@
             case("handle"):
               //get twitter handle and set vars
               apiPath='/api/comment/ipsum/twitter';
+              if(inputID.charAt(0)=="@"){inputID=inputID.substring(1);}
               data={count:2000, count_type:"words", source:inputID, tweets_or_replies:"tweets"};
               break;
             case("replies"):
               //get twitter handle and set vars
               apiPath='/api/comment/ipsum/twitter';
+              if(inputID.charAt(0)=="@"){inputID=inputID.substring(1);}
               data={count:2000, count_type:"words", source:inputID, tweets_or_replies:"replies"};
               break;
           }
