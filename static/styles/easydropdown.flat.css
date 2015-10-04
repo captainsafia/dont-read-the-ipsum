@@ -50,10 +50,13 @@
 	z-index: 2;
 }
 
+
 .dropdown:hover,
-.dropdown.focus{
-	background: #fff;
+{
+	background: #fff!important;
 }
+
+
 
 .dropdown:hover .selected{
 	color:#33CCCC;

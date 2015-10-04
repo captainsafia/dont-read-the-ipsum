@@ -68,12 +68,13 @@ form{max-width:auto; display:block; position:relative;}
 #selectWrapper{margin-left:-4%;}
 
 input[type="submit"]{
+    transition: background-color 0.5s ease;
     display: block;
     cursor: pointer;
     font-weight: 200;
     font-size: 16pt;
     letter-spacing: 5px;
-    background: #00e8d4;
+    background: #33CCCC;
     padding: 15px 0;
     margin:20px 0;
     border-radius: 11px;
@@ -89,6 +90,7 @@ input[type="submit"]{
 input:hover {
     background: white;
     border-radius: 11px;
+    color: #33CCCC;
 }
 
 #inputID, #outputNum {
