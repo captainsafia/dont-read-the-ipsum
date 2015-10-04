@@ -67,7 +67,8 @@
             outputType,
             inputID,
             outputNum,
-            apiPath;
+            apiPath,
+            data;
 
       $("form").submit(function(event){
         event.preventDefault();
@@ -84,18 +85,20 @@
             case("reddit"):
               //get reddit url val and set vars
               apiPath='/api/comment/ipsum/reddit';
+              data={count:2000, count_type:"words", source:inputID};
               break;
             case("handle"):
               //get twitter handle and set vars
               apiPath='/api/comment/ipsum/twitter';
+              data={count:2000, count_type:"words", source:inputID, tweets_or_replies:"tweets"};
               break;
             case("replies"):
               //get twitter handle and set vars
               apiPath='/api/comment/ipsum/twitter';
+              data={count:2000, count_type:"words", source:inputID, tweets_or_replies:"replies"};
               break;
           }
 
-          var data={count:1000, count_type:"paragraph", source:inputID};
           console.log(data);
           $.post( apiPath, data, function( response ) {
               console.log(data);
