@@ -105,6 +105,25 @@ a.pure-button-primary {
     font-size: 120%;
 }
 
+.go {
+    display: inline-block;
+    position: relative;
+    width: 250px;
+    cursor: pointer;
+    font-weight: 200;
+/*  background: white;
+*/  padding: 8px 0px 8px;
+    margin-bottom: 10px;
+    border-radius: 11px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    
+    color:  #000;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
 
 /*
  * -- MENU STYLES --

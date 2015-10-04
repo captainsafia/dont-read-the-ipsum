@@ -124,7 +124,7 @@
 
 /* SELECTED FEEDBACK ITEM */ 
 .dropdown .selected {
-    color: white;
+    color: black;
 }
 
 .dropdown .selected,
@@ -146,6 +146,7 @@
 	top: 0;
 	bottom: 0;
 	width: 60px;
+	color: green;
 	
 	border-radius: 0 11px 11px 0;
 	box-shadow: inset -55px 0 25px -20px none;
@@ -154,6 +155,7 @@
 .dropdown:hover .selected::after,
 .dropdown.focus .selected::after{
 	box-shadow: inset -55px 0 25px -20px none;
+	color: white;
 }
 
 /* DROP DOWN WRAPPER */
@@ -241,7 +243,7 @@
 	background: ;
 	position: relative;
 	z-index: 3;
-	color: white;
+	color: blue;
 }
 
 .dropdown li.active{
