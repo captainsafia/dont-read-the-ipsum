@@ -52,7 +52,7 @@
                 <input type="text" id="outputNum">
               </div>
             </div>
-            <p>Turn garbage content into garbage filler.</p>
+            <p id="tag">Turn garbage content into garbage filler.</p>
             <input type="submit" value="MAKE MAGIC">
             </form>
             <div id="output" style="display:none"></div>
@@ -124,6 +124,7 @@
 
       $("form").submit(function(event){
         $('#garbage').css('display', 'block');
+        $('#tag').html('Congratulations! You\'re a content creator!');
         event.preventDefault();
         if($('#output:visible')){
           $('#output').css('display', 'none');
@@ -156,6 +157,11 @@
               apiPath='/api/comment/ipsum/nyt';
               data={count:2000, source:inputID};
               break;
+            default:
+              apiPath='/api/comment/ipsum/twitter';
+              if(inputID.charAt(0)=="@"){inputID=inputID.substring(1);}
+              data={count:2000, count_type:"words", source:inputID, tweets_or_replies:"tweets"};
+              break;
           }
 
           console.log(data);
@@ -178,6 +184,10 @@
                 break;
               case("poem"):
                 $('#output').html(gimmeFreeVerse(input, outputNum)).promise().done(showOutput());
+                break;
+              default:
+                $('#output').html(gimmeNormal(input, outputNum)).promise().done(showOutput());
+                break;
             }
           });          
       });
