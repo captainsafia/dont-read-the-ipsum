@@ -129,7 +129,7 @@
 
 /* SELECTED FEEDBACK ITEM */ 
 .dropdown .selected {
-    color: black;
+    color: white;
 }
 
 .dropdown .selected,
@@ -248,7 +248,7 @@
 	background: ;
 	position: relative;
 	z-index: 3;
-	color: blue;
+	color: #3a3a3a;
 }
 
 .dropdown li.active{

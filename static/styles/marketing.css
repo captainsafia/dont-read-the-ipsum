@@ -71,17 +71,24 @@ input[type="submit"]{
     display: block;
     cursor: pointer;
     font-weight: 200;
-    background: rgba(255,255,255,.5);
+    font-size: 16pt;
+    letter-spacing: 5px;
+    background: #00e8d4;
     padding: 15px 0;
     margin:20px 0;
     border-radius: 11px;
     border-style: solid;
-    border-width: 2px;
+    border-width: px;
     border-color: white;
     width:100%;
     min-width:250px;
-    color:#000000;
-    font-weight:bold;
+    color: white;
+/*    font-weight: bold;
+*/}
+
+input:hover {
+    background: white;
+    border-radius: 11px;
 }
 
 #inputID, #outputNum {
@@ -90,7 +97,7 @@ input[type="submit"]{
     width:100%;
     cursor: pointer;
     font-weight: 200;
-    background: rgba(255,255,255,.5);
+    background: rgba(255,255,255,.2);
     padding: 8px 8px 8px;
     margin-bottom: 10px;
     border-radius: 11px;
@@ -98,7 +105,7 @@ input[type="submit"]{
     border-width: 2px;
     border-color: white;
     
-    color:  #000;
+    color:  white;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
@@ -232,14 +239,17 @@ a.pure-button-primary {
 
 .splash-container {
     /*background: #DCDCDC;*/
-    background: #00b7b1; /* Old browsers */
-background: -moz-linear-gradient(top, #00b7b1 0%, #067ea3 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00b7b1), color-stop(100%,#067ea3)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, #00b7b1 0%,#067ea3 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, #00b7b1 0%,#067ea3 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top, #00b7b1 0%,#067ea3 100%); /* IE10+ */
-background: linear-gradient(to bottom, #00b7b1 0%,#067ea3 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7b1', endColorstr='#067ea3',GradientType=0 ); /* IE6-9 */
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00fcf4+0,00779b+100 */
+background: #ea0094; /* Old browsers */
+background: -moz-linear-gradient(top, #ea0094 0%, #00779b 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ea0094), color-stop(100%,#00779b)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #ea0094 0%,#00779b 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #ea0094 0%,#00779b 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #ea0094 0%,#00779b 100%); /* IE10+ */
+background: linear-gradient(to bottom, #ea0094 0%,#00779b 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea0094', endColorstr='#00779b',GradientType=0 ); /* IE6-9 */
+copy
+copy
 copy
     z-index: 2;
     overflow: visible;
@@ -322,7 +332,7 @@ copy
 
 /* This is the class used for the footer */
 .footer {
-    background: #111;
+    background: #3a3a3a;
 }
 
 /*
